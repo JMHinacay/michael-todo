@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { Col, Layout, Row } from "antd";
+import { useState } from "react";
+import "./App.css";
+import InputBar from "./InputBar";
+import TodoList from "./TodoList";
 
-function App() {
+const { Content } = Layout;
+
+const App = () => {
+  const [allTodoItems, setAllTodoItems] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Layout className="layout">
+        <Content style={{ padding: "0 50px" }}>
+          <br />
+          <br />
+          <Row>
+            <Col span={12} offset={6}>
+              <InputBar
+                allTodoItems={allTodoItems}
+                setAllTodoItems={setAllTodoItems}
+              />
+              <TodoList
+                allTodoItems={allTodoItems}
+                setAllTodoItems={setAllTodoItems}
+              />
+            </Col>
+          </Row>
+        </Content>
+        <br />
+        <br />
+      </Layout>
+    </>
   );
-}
+};
 
 export default App;
